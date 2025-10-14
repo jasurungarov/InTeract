@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+ :root {
+  --background: 232 23% 92%;         /* #E8EAE5 (uchunchi rang) */
+  --foreground: 0 0% 0%;             /* qora matn */
+  
+  --card: 107 28% 64%;               /* #96BF8A - ikkinchi rang card fon */
+  --card-foreground: 0 0% 0%;        /* qora matn */
+  
+  --popover: 107 28% 64%;            /* #96BF8A - ikkinchi rang popover */
+  --popover-foreground: 0 0% 0%;     /* qora matn */
+  
+  --primary: 162 100% 12%;           /* #00412E - asosiy button / navbar */
+  --primary-foreground: 255 255% 100%; /* oq matn #FFFFFF */
+  
+  --secondary: 107 28% 64%;          /* #96BF8A - highlight / accent */
+  --secondary-foreground: 0 0% 0%;   /* qora matn */
+  
+  --muted: 232 23% 92%;              /* uchunchi fon */
+  --muted-foreground: 0 0% 0%;       /* qora matn */
+  
+  --accent: 107 28% 64%;             /* ikkinchi rang */
+  --accent-foreground: 0 0% 0%;      /* qora matn */
+  
+  --destructive: 0 84% 60%;          /* default qizil-ish rang */
+  --destructive-foreground: 255 255% 100%; /* oq matn */
+  
+  --border: 107 28% 64%;             /* ikkinchi rang border */
+  --input: 255 255% 100%;            /* oq input */
+  --ring: 162 100% 12%;              /* primary ring */
+  
+  --radius: 0.5rem;                  /* border radius */
+}
+
+.dark {
+  --background: 162 100% 12%;        /* #00412E asosiy fon */
+  --foreground: 255 255% 100%;       /* oq matn #FFFFFF */
+  
+  --card: 107 28% 64%;               /* #96BF8A card / popover fon */
+  --card-foreground: 0 0% 0%;        /* qora matn */
+  
+  --popover: 107 28% 64%;            /* ikkinchi rang popover */
+  --popover-foreground: 0 0% 0%;     /* qora matn */
+  
+  --primary: 162 100% 12%;           /* asosiy fon */
+  --primary-foreground: 255 255% 100%; /* oq matn */
+  
+  --secondary: 107 28% 64%;          /* ikkinchi rang */
+  --secondary-foreground: 255 255% 255%; /* oq matn */
+  
+  --muted: 162 100% 12%;             /* fon rang dark */
+  --muted-foreground: 215 20% 65%;   /* quyuqroq matn kontrasti */
+  
+  --accent: 107 28% 64%;             /* ikkinchi rang */
+  --accent-foreground: 255 255% 100%; /* oq matn */
+  
+  --destructive: 0 62% 30%;          /* quyuq qizil-ish rang */
+  --destructive-foreground: 255 255% 100%; /* oq matn */
+  
+  --border: 107 28% 64%;             /* ikkinchi rang border */
+  --input: 107 28% 64%;              /* input fon */
+  --ring: 162 100% 12%;              /* primary ring */
+  
+  --radius: 0.5rem;
+}
+
+
+.dark {
+  /* 🌑 Dark Mode */
+  --background: 162 100% 12%;        /* #00412E asosiy fon */
+  --foreground: 255 255% 100%;       /* oq matn #FFFFFF */
+  
+  --card: 107 28% 64%;               /* #96BF8A card fon */
+  --card-foreground: 0 0% 0%;        /* qora matn */
+  
+  --popover: 107 28% 64%;            /* ikkinchi rang popover */
+  --popover-foreground: 0 0% 0%;     /* qora matn */
+  
+  --primary: 162 100% 12%;           /* asosiy fon */
+  --primary-foreground: 255 255% 100%; /* oq matn */
+  
+  --secondary: 107 28% 64%;          /* ikkinchi rang */
+  --secondary-foreground: 255 255% 255%; /* oq matn */
+  
+  --muted: 162 100% 12%;             /* fon rang dark */
+  --muted-foreground: 215 20% 65%;   /* vizual kontrast uchun quyuqroq matn */
+  
+  --accent: 107 28% 64%;             /* ikkinchi rang */
+  --accent-foreground: 255 255% 100%; /* oq matn */
+  
+  --destructive: 0 62% 30%;          /* quyuq qizil-ish rang */
+  --destructive-foreground: 255 255% 100%; /* oq matn */
+  
+  --border: 107 28% 64%;             /* accent rang bilan mos */
+  --input: 107 28% 64%;              /* input rang */
+  --ring: 162 100% 12%;              /* asosiy rang bilan mos */
+}
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
