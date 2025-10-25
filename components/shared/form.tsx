@@ -72,7 +72,7 @@ const Form = ({ placeholder, user, setPosts, isComment, postId }: Props) => {
 
         <div className="w-full">
           <textarea
-            className="disabled:opacity-80 peer resize-none mt-3 w-full bg-custom-green ring-0 outline-none text-[20px] placeholder-neutral-500 text-white h-[50px]"
+            className="disabled:opacity-80 peer resize-none mt-3 w-full bg-custom-green ring-0 outline-none text-[20px] placeholder-neutral-500 text-white h-[50px] rounded-sm"
             placeholder={placeholder}
             disabled={isLoading}
             value={body}

@@ -1,16 +1,16 @@
 "use client";
 
-import { IPost, IUser } from "@/types";
-import React, { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { sliceText } from "@/lib/utils";
-import { formatDistanceToNowStrict } from "date-fns";
-import { AiFillDelete, AiOutlineMessage } from "react-icons/ai";
-import { FaHeart } from "react-icons/fa";
-import { toast } from "../ui/use-toast";
-import axios from "axios";
-import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { sliceText } from "@/lib/utils"
+import { IPost, IUser } from "@/types"
+import axios from "axios"
+import { formatDistanceToNowStrict } from "date-fns"
+import { Loader2 } from "lucide-react"
+import { useRouter } from "next/navigation"
+import React, { useState } from "react"
+import { AiFillDelete, AiOutlineMessage } from "react-icons/ai"
+import { FaHeart } from "react-icons/fa"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { toast } from "../ui/use-toast"
 
 interface Props {
   post: IPost;
@@ -20,6 +20,11 @@ interface Props {
 
 const PostItem = ({ post, user, setPosts }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const toggleExpand = (e: React.MouseEvent) => {
+    e.stopPropagation(); // boshqa clicklarni to‘xtatadi
+    setExpanded(!expanded);
+  };
 
   const router = useRouter();
 
@@ -103,7 +108,7 @@ const PostItem = ({ post, user, setPosts }: Props) => {
   };
 
   return (
-    <div className="border-b-[1px] border-neutral-800 p-5 cursor-pointer hover:bg-custom-green transition relative">
+    <div className="border-b-[1px] border-neutral-800 p-4 cursor-pointer hover:bg-custom-green transition relative">
       {isLoading && (
         <div className="absolute inset-0 w-full h-full bg-black opacity-50">
           <div className="flex justify-center items-center h-full">
@@ -115,30 +120,53 @@ const PostItem = ({ post, user, setPosts }: Props) => {
         className="flex flex-row items-center gap-3 cursor-pointer"
         onClick={goToPost}
       >
-        <Avatar onClick={goToProfile}>
+
+        <div>
+          <div className='flex flex-row gap-3 bg-custom-green p-2 rounded-lg items-center'>
+             <Avatar onClick={goToProfile}>
           <AvatarImage src={post.user.profileImage} />
           <AvatarFallback>{post.user.name[0]}</AvatarFallback>
         </Avatar>
 
-        <div>
           <div
-            className="flex flex-row items-center gap-2"
+            className="flex flex-col items-start"
             onClick={goToProfile}
           >
             <p className="text-white font-semibold cursor-pointer hover:underline">
               {post.user.name}
             </p>
-            <span className="text-neutral-500 cursor-pointer hover:underline hidden md:block">
+            <span className="text-neutral-500 text-xs cursor-pointer hover:underline">
               {post.user.username
-                ? `@${sliceText(post.user.username, 16)}`
-                : sliceText(post.user.email, 16)}
+                ? `@${sliceText(post.user.username, 20)}`
+                : sliceText(post.user.email, 20)}
             </span>
-            <span className="text-neutral-500 text-sm">
-              {formatDistanceToNowStrict(new Date(post.createdAt))} ago
-            </span>
+           
+          </div>
           </div>
 
-          <div className="text-white mt-1">{post.body}</div>
+          <div className="text-white mt-2">
+  <p className="transition-all duration-300">
+    {expanded
+      ? post.body
+      : post.body.length > 300
+      ? `${post.body.slice(0, 300)}...`
+      : post.body}
+
+    {post.body.length > 300 && (
+      <span
+        onClick={toggleExpand}
+        className="text-neutral-500 text-sm hover:underline cursor-pointer ml-1"
+      >
+        {expanded ? "less" : "more"}
+      </span>
+    )}
+  </p>
+</div>
+
+
+           <span className="text-neutral-500 text-sm">
+              {formatDistanceToNowStrict(new Date(post.createdAt))} ago
+            </span>
 
           <div className="flex flex-row items-center mt-3 gap-10">
             <div className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-sky-500">

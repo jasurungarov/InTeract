@@ -8,6 +8,7 @@ import SidebarPostButton from "./sidebar-post-button";
 import SidebarAccount from "./sidebar-account";
 import { IUser } from "@/types";
 import { MdOutlineExplore } from "react-icons/md";
+import { PiChatsCircleBold } from "react-icons/pi";
 
 const Sidebar = ({ user }: { user: IUser }) => {
   const sidebarItems = [
@@ -26,6 +27,11 @@ const Sidebar = ({ user }: { user: IUser }) => {
       label: "Profile",
       path: `/profile/${user?._id}`,
       icon: User,
+    },
+    {
+      label: "AI Chat",
+      path: `/gpt/${user?._id}`,
+      icon: PiChatsCircleBold,
     },
     {
       label: "Explore",

@@ -64,28 +64,31 @@ const Page = ({ params }: { params: { postId: string } }) => {
         <>
           <div className="border-b-[1px] border-neutral-800 p-5 cursor-pointer bg-custom-green transition">
             <div className="flex flex-row items-center gap-3">
-              <Avatar>
+
+              <div>
+                <div className='flex flex-row gap-3 items-center'>
+                <Avatar>
                 <AvatarImage src={post?.user.profileImage} />
                 <AvatarFallback>{post?.user.name[0]}</AvatarFallback>
               </Avatar>
 
-              <div>
-                <div className="flex flex-row items-center gap-2">
+                <div className="flex flex-col items-start">
                   <p className="text-white font-semibold cursor-pointer hover:underline">
                     {post?.user.name}
                   </p>
-                  <span className="text-neutral-500 cursor-pointer hover:underline hidden md:block">
+                  <span className="text-neutral-500 cursor-pointer hover:underline text-sm">
                     {post && post?.user.username
                       ? `@${sliceText(post.user.username, 20)}`
                       : post && sliceText(post.user.email, 20)}
                   </span>
-                  <span className="text-neutral-500 text-sm">
-                    {post &&
-                      post.createdAt &&
-                      formatDistanceToNowStrict(new Date(post.createdAt))}
-                  </span>
+                </div>
                 </div>
                 <div className="text-white mt-1">{post?.body}</div>
+                <span className="text-neutral-500 text-sm">
+                    {post &&
+                      post.createdAt &&
+                      formatDistanceToNowStrict(new Date(post.createdAt))} ago
+                  </span>
               </div>
             </div>
           </div>
