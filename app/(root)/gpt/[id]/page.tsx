@@ -2,7 +2,7 @@
 
 import Header from "@/components/shared/header";
 import { Loader2 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import useUser from "@/hooks/useUsers"; 
 import Button from '@/components/ui/button'
 
@@ -15,6 +15,11 @@ export default function GPTPage() {
     { role: "ai", text: "Send your post, I will beautifully format it or Post's theme" },
   ]);
   const [isloading, setLoading] = useState(false);
+
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -50,11 +55,9 @@ export default function GPTPage() {
   return (
     <>
       <Header isBack label="AI Chat"/>
-      
-                
-      <div className="flex h-[calc(100vh-64px)]">
-        <div className="flex-1 flex flex-col justify-between">
-          
+      {user && (
+        <>
+        <div className="flex flex-col h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)]">
           <div className="flex-1 overflow-y-auto p-4 space-y-3">
             {messages.map((msg, i) => (
               <div
@@ -78,32 +81,38 @@ export default function GPTPage() {
             {isloading && (
               <div className="flex justify-start">
                 <div className="flex items-center gap-2 bg-green-500 px-4 py-2 rounded-2xl text-white">
-                  <Loader2 className="animate-spin w-4 h-4" /> typing...
+                  <Loader2 className="animate-spin w-4 h-4" />typing...
                 </div>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input */}
-          <div className="p-4  flex gap-3">
+          <div className="sticky bottom-0 backdrop-blur-md p-4 flex gap-3 max-sm:gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  sendMessage();
+                }
+              }}
               placeholder="Message..."
-              className="flex-1 bg-custom-xaki p-3 rounded-xl outline-none text-white"
+              className="flex-1 bg-custom-xaki p-3 rounded-xl outline-none text-white max-sm:w-full"
             />
             <Button
               onClick={sendMessage}
               disabled={isloading || !input.trim()}
-              classNames="rounded-xl px-4"
+              classNames="rounded-xl"
               label="Send"
             />
           </div>
         </div>
-
-        
-        </div>
+        </>
+      )}
     </>
   );
 }

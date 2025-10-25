@@ -33,7 +33,8 @@ export default function Page() {
   return (
     <>
       <Header label="Home" />
-      {isLoading || status === "loading" ? (
+      {isLoading || status === "loading" ? 
+      (
         <div className="flex justify-center items-center h-24">
           <Loader2 className="animate-spin text-sky-500" />
         </div>
