@@ -7,23 +7,27 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://in-teract.vercel.app'),
-	title: 'InTeract',
-	description: 'InTeract is a real-time chat application built with Next.js and MongoDB, developed by Jasur Ungarov. Designed for smooth, fast, and interactive communication.',
-	authors: [{ name: 'Jasur Unagrov', url: 'https://ungarov.uz' }],
-	 icons: { icon: "/images/Logo1.png" },
+	title: 'InTeract — Real-Time Chat Platform by Jasur Ungarov',
+	description:
+		'InTeract is a next-generation real-time chat platform built with Next.js and MongoDB by Jasur Ungarov. Designed for speed, reliability, and seamless communication across the web.',
+	authors: [{ name: 'Jasur Ungarov', url: 'https://ungarov.uz' }],
+	icons: { icon: '/images/logo.png' },
 	openGraph: {
-		title: 'InTeract',
-		description: "InTeract built with Next.js and MongoDB. Developed by Jasur Ungarov.",
+		title: 'InTeract — Real-Time Chat Platform',
+		description:
+			'Experience instant and interactive conversations with InTeract, a modern real-time chat application built using Next.js and MongoDB by Jasur Ungarov.',
 		type: 'website',
 		url: 'https://in-teract.vercel.app',
-		locale: 'kg_KG',
-		images: '/images/Logo1.png',
+		locale: 'en_US',
+		images: ['/images/ITdark.png'],
 		countryName: 'Kyrgyzstan',
 		siteName: 'InTeract',
 		emails: 'info@interact.com',
 	},
-	keywords: "InTeract, InTeract web, InTeract web application, Ilon, Ilon Mask, Jasur Ungarov, Ungarov Jasur, Ungarov, Jasur, Ungarov web, Jasur web, interact, interact app, interact web app, interact web application, real-time chat, next.js chat app, mongodb chat app, next.js messaging app, mongodb messaging app, real-time messaging, interactive chat application",
-}
+	keywords:
+		'InTeract, Interact app, InTeract chat, Jasur Ungarov, Next.js chat app, MongoDB chat app, real-time messaging, interactive chat platform, modern web communication, Ungarov web, Kyrgyzstan tech, next generation chat, instant messaging app',
+};
+
 
 export default function RootLayout({
   children,
