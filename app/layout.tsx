@@ -6,7 +6,7 @@ import { Provider } from "./provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	metadataBase: new URL('https://in-teract.vercel.app'),
+	metadataBase: new URL('https://interact.uz'),
 	title: 'InTeract — Real-Time Chat Platform by Jasur Ungarov',
 	description:
 		'InTeract is a next-generation real-time chat platform built with Next.js and MongoDB by Jasur Ungarov. Designed for speed, reliability, and seamless communication across the web.',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 		description:
 			'Experience instant and interactive conversations with InTeract, a modern real-time chat application built using Next.js and MongoDB by Jasur Ungarov.',
 		type: 'website',
-		url: 'https://in-teract.vercel.app',
+		url: 'https://interact.uz',
 		locale: 'en_US',
 		images: ['/images/ITdark.png'],
 		countryName: 'Kyrgyzstan',
